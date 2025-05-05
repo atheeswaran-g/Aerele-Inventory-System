@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+<h1>Search Results</h1>
+<h2>Product Balances</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Warehouse</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for balance in balances %}
+        <tr>
+            <td>{{ balance.product }}</td>
+            <td>{{ balance.warehouse }}</td>
+            <td>{{ balance.qty }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>Transaction History</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Product</th>
+            <th>From Location</th>
+            <th>To Location</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.timestamp }}</td>
+            <td>{{ transaction.product }}</td>
+            <td>{{ transaction.from_location }}</td>
+            <td>{{ transaction.to_location }}</td>
+            <td>{{ transaction.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/movements" class="btn btn-primary">Back to Movements</a>
+{% endblock %}
